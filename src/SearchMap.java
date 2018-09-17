@@ -18,7 +18,7 @@ import java.util.List;
  * @author Cullen Coyle ITP 368, Fall 2018 Assignment 00 cullenco@usc.edu
  * 
  */
-public class Project1 {
+public class SearchMap {
 
 	private static char startCity;
 	private static PrintWriter writer;
@@ -78,7 +78,7 @@ public class Project1 {
 		// initializations
 		City city1 = null;
 		City city2 = null;
-		Flight newFlight;
+		FlightMap newFlight;
 
 		// if the city hasn't been established yet, create it.
 		// Else, set the cities to the proper variables
@@ -94,7 +94,7 @@ public class Project1 {
 		}
 
 		// create flight and add it to outgoing from origin
-		newFlight = new Flight(city1, city2, price);
+		newFlight = new FlightMap(city1, city2, price);
 		city1.addFlight(newFlight);
 
 	}

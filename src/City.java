@@ -17,18 +17,18 @@ import java.util.List;
  */
 public class City {
 	
-	List<Flight> outGoingFlights;
+	List<FlightMap> outGoingFlights;
 	char city;
 	boolean visited;
 	
 	public City(char city) {
 		this.city = city;
-		outGoingFlights = new ArrayList<Flight>();
+		outGoingFlights = new ArrayList<FlightMap>();
 		visited = false;
 		
 	}
 	
-	public void addFlight(Flight newFlight) {
+	public void addFlight(FlightMap newFlight) {
 		outGoingFlights.add(newFlight);
 	}
 
@@ -40,7 +40,7 @@ public class City {
 		this.visited = visited;
 	}
 
-	public List<Flight> getOutGoingFlights() {
+	public List<FlightMap> getOutGoingFlights() {
 		return outGoingFlights;
 	}
 

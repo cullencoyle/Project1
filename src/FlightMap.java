@@ -12,13 +12,13 @@
  * cullenco@usc.edu
 
  */
-public class Flight {
+public class FlightMap {
 
 	private City origin;
 	private City destination;
 	private int price;
 	
-	public Flight(City origin, City destination, int price) {
+	public FlightMap(City origin, City destination, int price) {
 		this.origin = origin;
 		this.destination = destination;
 		this.price = price;
