@@ -1,49 +1,65 @@
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 
- */
-
-/**
-/**
- * Brief description of the code
- * 
- * @author Cullen Coyle
- * ITP 368, Fall 2018
- * Assignment 03
- * cullenco@usc.edu
-
- */
 public class City {
 	
-	List<FlightMap> outGoingFlights;
+	List<Flight> outGoingFlights;
 	char city;
 	boolean visited;
 	
+	/**
+     * Constructor of city object
+     * @param character representing city
+     * @return none
+     */
 	public City(char city) {
 		this.city = city;
-		outGoingFlights = new ArrayList<FlightMap>();
+		outGoingFlights = new ArrayList<Flight>();
 		visited = false;
 		
 	}
 	
-	public void addFlight(FlightMap newFlight) {
+	/**
+     * Adds a flight to the list of outgoing flights associated with the city
+     * @param flight outgoing from city
+     * @return none
+     */
+	public void addFlight(Flight newFlight) {
 		outGoingFlights.add(newFlight);
 	}
 
+	/**
+     * Returns if the city has been visited or not, used for DFS search algorithm
+     * @param none
+     * @return true or false
+     */
 	public boolean isVisited() {
 		return visited;
 	}
 
+	/**
+     * Set the state of the visited city
+     * @param boolean of the state: set to false by default so used to set to true
+     * @return none
+     */
 	public void setVisited(boolean visited) {
 		this.visited = visited;
 	}
 
-	public List<FlightMap> getOutGoingFlights() {
+	/**
+     * Returns the whole list of outgoing flights associated with the city
+     * @param none
+     * @return List of Flight objects
+     */
+	public List<Flight> getOutGoingFlights() {
 		return outGoingFlights;
 	}
 
+	/**
+     * Returns city character associated with city
+     * @param none
+     * @return character associated with city
+     */
 	public char getCity() {
 		return city;
 	}

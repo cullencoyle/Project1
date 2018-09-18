@@ -1,5 +1,68 @@
 <project name="Project1" default="compile" basedir=".">
 	<description>
-		A build file for this project
+		A build file for Project1
 	</description>
-	</project>
+
+	<property name="source.dir" location="src" />
+	<property name="build.dir" location="bin" />
+	<property name="dist.dir" location="dist" />
+	<property name="doc.dir" location="doc" />
+
+	<property name="lib.dir" location="lib" />
+
+	<path id="classPath.test">
+		<pathelement location="${lib.dir}/junit-4.10.jar" />
+		<pathelement location="${lib.dir}/hamcrest-core-1.3.jar" />
+	</path>
+
+
+	<target name="init" description="set up project directories">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${doc.dir}" />
+	</target>
+
+	<target name="compile" depends="init" description="Compiles java sources">
+		<javac includeantruntime="false" srcdir="${source.dir}" destdir="${build.dir}">
+			<classpath refid="classPath.test" />
+		</javac>
+	</target>
+
+	<target name="doc" depends="init" description="generate documentation">
+		<javadoc sourcepath="${source.dir}" destdir="${doc.dir}">
+			<fileset dir="${source.dir}" defaultexcludes="yes">
+				<exclude name="TestFlight" />
+				<exclude name="TestFlightMap" />
+				<exclude name="TestCity" />
+			</fileset>
+		</javadoc>
+	</target>
+
+	<target name="clean" description="tidy up the workspace">
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir}" />
+		<delete dir="${doc.dir}" />
+	</target>
+
+	<target name="dist" depends="compile" description="generate the distribution">
+		<jar jarfile="${dist.dir}/Project1.jar" basedir="${build.dir}" includes="**">
+			<manifest>
+				<attribute name="Main-Class" value="SearchMap" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="test" depends="compile" description="Runs Unit Test">
+		<junit printsummary="yes" haltonfailure="yes" showoutput="yes">
+			<test name="TestCity" />
+			<test name="TestFlight" />
+			<test name="TestFlightMap" />
+
+			<classpath refid="classPath.test" />
+			<classpath>
+				<pathelement location="${build.dir}" />
+			</classpath>
+		</junit>
+	</target>
+
+</project>
